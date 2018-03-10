@@ -18,7 +18,7 @@
 
 import {
 	UPDATE_DISAMBIGUATION_FIELD, UPDATE_LANGUAGE_FIELD, UPDATE_NAME_FIELD,
-	UPDATE_SORT_NAME_FIELD
+	UPDATE_SORT_NAME_FIELD, UPDATE_WARN_IF_EXISTS
 } from './actions';
 import Immutable from 'immutable';
 
@@ -28,11 +28,14 @@ function reducer(
 		disambiguation: '',
 		language: null,
 		name: '',
-		sortName: ''
+		sortName: '',
+		warnIfExists: false
 	}),
 	action
 ) {
+	// console.log(action);
 	const {payload, type} = action;
+	// console.log('reducer', payload, type);
 	switch (type) {
 		case UPDATE_NAME_FIELD:
 			return state.set('name', payload);
@@ -42,6 +45,8 @@ function reducer(
 			return state.set('language', payload);
 		case UPDATE_DISAMBIGUATION_FIELD:
 			return state.set('disambiguation', payload);
+		case UPDATE_WARN_IF_EXISTS:
+			return state.set('warnIfExists', payload);
 		// no default
 	}
 	return state;
