@@ -3,6 +3,9 @@ node_js:
   - "lts/*"
   - "8"
 
+addons:
+  postgresql: "9.5"
+
 notifications:
   email: false
   irc:
